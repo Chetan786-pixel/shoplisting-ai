@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopListing AI — Product Listing Writer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="logo">S<span>✦</span></div>
+      <div>
+        <p class="eyebrow">FOR SMALL SELLERS</p>
+        <h1>ShopListing <span>AI</span></h1>
+      </div>
+      <div class="pill">Open-model powered</div>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">YOUR PRODUCT, BETTER WORDS</p>
+      <h2>Turn product details into<br /><span>listings that sell.</span></h2>
+      <p class="subtext">Create a product title, description, and tags in seconds.</p>
+    </section>
+
+    <section class="workspace">
+      <form id="listing-form" class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">STEP 1</p>
+            <h3>Tell us about your product</h3>
+          </div>
+          <span class="step-icon">✎</span>
+        </div>
+
+        <label for="product">Product name</label>
+        <input id="product" name="product" placeholder="e.g. Handmade ceramic coffee mug" required />
+
+        <div class="two-col">
+          <div>
+            <label for="audience">Target customer</label>
+            <input id="audience" name="audience" placeholder="e.g. coffee lovers" />
+          </div>
+          <div>
+            <label for="tone">Writing style</label>
+            <select id="tone" name="tone">
+              <option value="friendly and persuasive">Friendly</option>
+              <option value="professional and clear">Professional</option>
+              <option value="playful and creative">Playful</option>
+              <option value="minimal and premium">Premium</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="features">Key features</label>
+        <textarea id="features" name="features" rows="4" placeholder="e.g. handmade, 350 ml, microwave safe, gift-ready"></textarea>
+
+        <div class="two-col">
+          <div>
+            <label for="price">Price (optional)</label>
+            <input id="price" name="price" placeholder="e.g. ₹499" />
+          </div>
+          <div>
+            <label for="platform">Where will you sell?</label>
+            <select id="platform" name="platform">
+              <option>Instagram</option>
+              <option>Etsy</option>
+              <option>Amazon</option>
+              <option>Meesho</option>
+              <option>My own store</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="generate" type="submit"><span>✦</span> Generate listing</button>
+        <p class="hint">Connect a Hugging Face model endpoint in <code>script.js</code> to enable real AI generation.</p>
+      </form>
+
+      <section class="panel result-panel" aria-live="polite">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">STEP 2</p>
+            <h3>Your listing</h3>
+          </div>
+          <span class="result-badge">OUTPUT</span>
+        </div>
+        <div id="empty-state" class="empty-state">
+          <div class="sparkle">✦</div>
+          <h4>Your next listing starts here</h4>
+          <p>Enter product details and generate a listing draft.</p>
+        </div>
+        <div id="result" class="result hidden">
+          <div class="output-block">
+            <div class="output-label">PRODUCT TITLE <button class="copy" data-copy="title-output" type="button">Copy</button></div>
+            <p id="title-output"></p>
+          </div>
+          <div class="output-block">
+            <div class="output-label">DESCRIPTION <button class="copy" data-copy="description-output" type="button">Copy</button></div>
+            <p id="description-output"></p>
+          </div>
+          <div class="output-block">
+            <div class="output-label">TAGS <button class="copy" data-copy="tags-output" type="button">Copy</button></div>
+            <p id="tags-output" class="tags"></p>
+          </div>
+          <button id="copy-all" class="secondary" type="button">Copy full listing</button>
+        </div>
+        <p id="status" class="status">Demo mode: generates a template draft in your browser.</p>
+      </section>
+    </section>
+
+    <footer>Built for independent sellers · Designed to support open AI models</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
